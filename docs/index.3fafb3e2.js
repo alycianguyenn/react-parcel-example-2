@@ -1054,7 +1054,7 @@ try {
   var _reactDomDefault = _parcelHelpers.interopDefault(_reactDom);
   var _App = require("./App");
   var _AppDefault = _parcelHelpers.interopDefault(_App);
-  var _jsxFileName = "/Users/alycianguyen/Desktop/INFO 474/in-class-activities/react-parcel-example1/src/index.js";
+  var _jsxFileName = "/Users/alycianguyen/Desktop/INFO 474/in-class-activities/react-parcel-example-2/src/index.js";
   _reactDomDefault.default.render(/*#__PURE__*/_reactDefault.default.createElement(_AppDefault.default, {
     __self: undefined,
     __source: {
@@ -26272,114 +26272,35 @@ try {
   _parcelHelpers.defineInteropFlag(exports);
   var _react = require("react");
   var _reactDefault = _parcelHelpers.interopDefault(_react);
-  var _jsxFileName = "/Users/alycianguyen/Desktop/INFO 474/in-class-activities/react-parcel-example1/src/App.js";
+  var _d3Fetch = require("d3-fetch");
+  var _jsxFileName = "/Users/alycianguyen/Desktop/INFO 474/in-class-activities/react-parcel-example-2/src/App.js";
   const viewHeight = 500;
   const viewWidth = 500;
   const App = () => {
+    _d3Fetch.csv('https://raw.githubusercontent.com/alycianguyenn/react-parcel-example-2/main/weather.csv').then(data => console.log(data));
     return (
-      /*#__PURE__*/_reactDefault.default.createElement("svg", {
-        style: {
-          border: "1px solid lightgrey",
-          width: viewWidth,
-          height: viewHeight
-        },
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9,
+          lineNumber: 12,
           columnNumber: 9
         }
-      }, /*#__PURE__*/_reactDefault.default.createElement("circle", {
-        cx: 20,
-        cy: 20,
-        r: "5",
+      }, /*#__PURE__*/_reactDefault.default.createElement("h1", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 13,
           columnNumber: 13
         }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 200,
-        y: 200,
-        width: 10,
-        height: 10,
-        fill: "rgb(230, 230, 230)",
+      }, "Exploratory Data Analysis, A2 example"), /*#__PURE__*/_reactDefault.default.createElement("p", {
         __self: undefined,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 14,
           columnNumber: 13
         }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 212,
-        y: 200,
-        width: 10,
-        height: 10,
-        fill: "rgb(230, 230, 230)",
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 15,
-          columnNumber: 13
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 224,
-        y: 200,
-        width: 10,
-        height: 10,
-        fill: "rgb(230, 230, 230)",
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 16,
-          columnNumber: 13
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 236,
-        y: 200,
-        width: 10,
-        height: 10,
-        fill: "rgb(230, 230, 230)",
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 17,
-          columnNumber: 13
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("rect", {
-        x: 248,
-        y: 200,
-        width: 10,
-        height: 10,
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 18,
-          columnNumber: 13
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("line", {
-        x1: 20,
-        y1: viewHeight - 20,
-        x2: 150,
-        y2: 100,
-        stroke: "black",
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19,
-          columnNumber: 13
-        }
-      }), /*#__PURE__*/_reactDefault.default.createElement("text", {
-        x: "20",
-        y: "35",
-        __self: undefined,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 20,
-          columnNumber: 13
-        }
-      }, "Price history of 100 randomly selected Pokemon cards"))
+      }, "Data!"))
     );
   };
   _c = App;
@@ -26392,7 +26313,272 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"5gA8y":[function(require,module,exports) {
+},{"react":"3b2NM","d3-fetch":"3eyo6","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}],"3eyo6":[function(require,module,exports) {
+var define;
+// https://d3js.org/d3-fetch/ v2.0.0 Copyright 2020 Mike Bostock
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-dsv')) : typeof define === 'function' && define.amd ? define(['exports', 'd3-dsv'], factory) : (global = global || self, factory(global.d3 = global.d3 || ({}), global.d3));
+})(this, function (exports, d3Dsv) {
+  "use strict";
+  function responseBlob(response) {
+    if (!response.ok) throw new Error(response.status + " " + response.statusText);
+    return response.blob();
+  }
+  function blob(input, init) {
+    return fetch(input, init).then(responseBlob);
+  }
+  function responseArrayBuffer(response) {
+    if (!response.ok) throw new Error(response.status + " " + response.statusText);
+    return response.arrayBuffer();
+  }
+  function buffer(input, init) {
+    return fetch(input, init).then(responseArrayBuffer);
+  }
+  function responseText(response) {
+    if (!response.ok) throw new Error(response.status + " " + response.statusText);
+    return response.text();
+  }
+  function text(input, init) {
+    return fetch(input, init).then(responseText);
+  }
+  function dsvParse(parse) {
+    return function (input, init, row) {
+      if (arguments.length === 2 && typeof init === "function") (row = init, init = undefined);
+      return text(input, init).then(function (response) {
+        return parse(response, row);
+      });
+    };
+  }
+  function dsv(delimiter, input, init, row) {
+    if (arguments.length === 3 && typeof init === "function") (row = init, init = undefined);
+    var format = d3Dsv.dsvFormat(delimiter);
+    return text(input, init).then(function (response) {
+      return format.parse(response, row);
+    });
+  }
+  var csv = dsvParse(d3Dsv.csvParse);
+  var tsv = dsvParse(d3Dsv.tsvParse);
+  function image(input, init) {
+    return new Promise(function (resolve, reject) {
+      var image = new Image();
+      for (var key in init) image[key] = init[key];
+      image.onerror = reject;
+      image.onload = function () {
+        resolve(image);
+      };
+      image.src = input;
+    });
+  }
+  function responseJson(response) {
+    if (!response.ok) throw new Error(response.status + " " + response.statusText);
+    if (response.status === 204 || response.status === 205) return;
+    return response.json();
+  }
+  function json(input, init) {
+    return fetch(input, init).then(responseJson);
+  }
+  function parser(type) {
+    return (input, init) => text(input, init).then(text => new DOMParser().parseFromString(text, type));
+  }
+  var xml = parser("application/xml");
+  var html = parser("text/html");
+  var svg = parser("image/svg+xml");
+  exports.blob = blob;
+  exports.buffer = buffer;
+  exports.csv = csv;
+  exports.dsv = dsv;
+  exports.html = html;
+  exports.image = image;
+  exports.json = json;
+  exports.svg = svg;
+  exports.text = text;
+  exports.tsv = tsv;
+  exports.xml = xml;
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+});
+
+},{"d3-dsv":"6T2lj"}],"6T2lj":[function(require,module,exports) {
+var define;
+// https://d3js.org/d3-dsv/ v2.0.0 Copyright 2020 Mike Bostock
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define(['exports'], factory) : (global = global || self, factory(global.d3 = global.d3 || ({})));
+})(this, function (exports) {
+  "use strict";
+  var EOL = {}, EOF = {}, QUOTE = 34, NEWLINE = 10, RETURN = 13;
+  function objectConverter(columns) {
+    return new Function("d", "return {" + columns.map(function (name, i) {
+      return JSON.stringify(name) + ": d[" + i + "] || \"\"";
+    }).join(",") + "}");
+  }
+  function customConverter(columns, f) {
+    var object = objectConverter(columns);
+    return function (row, i) {
+      return f(object(row), i, columns);
+    };
+  }
+  // Compute unique columns in order of discovery.
+  function inferColumns(rows) {
+    var columnSet = Object.create(null), columns = [];
+    rows.forEach(function (row) {
+      for (var column in row) {
+        if (!((column in columnSet))) {
+          columns.push(columnSet[column] = column);
+        }
+      }
+    });
+    return columns;
+  }
+  function pad(value, width) {
+    var s = value + "", length = s.length;
+    return length < width ? new Array(width - length + 1).join(0) + s : s;
+  }
+  function formatYear(year) {
+    return year < 0 ? "-" + pad(-year, 6) : year > 9999 ? "+" + pad(year, 6) : pad(year, 4);
+  }
+  function formatDate(date) {
+    var hours = date.getUTCHours(), minutes = date.getUTCMinutes(), seconds = date.getUTCSeconds(), milliseconds = date.getUTCMilliseconds();
+    return isNaN(date) ? "Invalid Date" : formatYear(date.getUTCFullYear()) + "-" + pad(date.getUTCMonth() + 1, 2) + "-" + pad(date.getUTCDate(), 2) + (milliseconds ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "." + pad(milliseconds, 3) + "Z" : seconds ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "Z" : minutes || hours ? "T" + pad(hours, 2) + ":" + pad(minutes, 2) + "Z" : "");
+  }
+  function dsv(delimiter) {
+    var reFormat = new RegExp("[\"" + delimiter + "\n\r]"), DELIMITER = delimiter.charCodeAt(0);
+    function parse(text, f) {
+      var convert, columns, rows = parseRows(text, function (row, i) {
+        if (convert) return convert(row, i - 1);
+        (columns = row, convert = f ? customConverter(row, f) : objectConverter(row));
+      });
+      rows.columns = columns || [];
+      return rows;
+    }
+    function parseRows(text, f) {
+      var rows = [], // output rows
+      N = text.length, I = 0, // current character index
+      n = 0, // current line number
+      t, // current token
+      eof = N <= 0, // current token followed by EOF?
+      eol = false;
+      // current token followed by EOL?
+      // Strip the trailing newline.
+      if (text.charCodeAt(N - 1) === NEWLINE) --N;
+      if (text.charCodeAt(N - 1) === RETURN) --N;
+      function token() {
+        if (eof) return EOF;
+        if (eol) return (eol = false, EOL);
+        // Unescape quotes.
+        var i, j = I, c;
+        if (text.charCodeAt(j) === QUOTE) {
+          while (I++ < N && text.charCodeAt(I) !== QUOTE || text.charCodeAt(++I) === QUOTE) ;
+          if ((i = I) >= N) eof = true; else if ((c = text.charCodeAt(I++)) === NEWLINE) eol = true; else if (c === RETURN) {
+            eol = true;
+            if (text.charCodeAt(I) === NEWLINE) ++I;
+          }
+          return text.slice(j + 1, i - 1).replace(/""/g, "\"");
+        }
+        // Find next delimiter or newline.
+        while (I < N) {
+          if ((c = text.charCodeAt(i = I++)) === NEWLINE) eol = true; else if (c === RETURN) {
+            eol = true;
+            if (text.charCodeAt(I) === NEWLINE) ++I;
+          } else if (c !== DELIMITER) continue;
+          return text.slice(j, i);
+        }
+        // Return last token before EOF.
+        return (eof = true, text.slice(j, N));
+      }
+      while ((t = token()) !== EOF) {
+        var row = [];
+        while (t !== EOL && t !== EOF) (row.push(t), t = token());
+        if (f && (row = f(row, n++)) == null) continue;
+        rows.push(row);
+      }
+      return rows;
+    }
+    function preformatBody(rows, columns) {
+      return rows.map(function (row) {
+        return columns.map(function (column) {
+          return formatValue(row[column]);
+        }).join(delimiter);
+      });
+    }
+    function format(rows, columns) {
+      if (columns == null) columns = inferColumns(rows);
+      return [columns.map(formatValue).join(delimiter)].concat(preformatBody(rows, columns)).join("\n");
+    }
+    function formatBody(rows, columns) {
+      if (columns == null) columns = inferColumns(rows);
+      return preformatBody(rows, columns).join("\n");
+    }
+    function formatRows(rows) {
+      return rows.map(formatRow).join("\n");
+    }
+    function formatRow(row) {
+      return row.map(formatValue).join(delimiter);
+    }
+    function formatValue(value) {
+      return value == null ? "" : value instanceof Date ? formatDate(value) : reFormat.test(value += "") ? "\"" + value.replace(/"/g, "\"\"") + "\"" : value;
+    }
+    return {
+      parse: parse,
+      parseRows: parseRows,
+      format: format,
+      formatBody: formatBody,
+      formatRows: formatRows,
+      formatRow: formatRow,
+      formatValue: formatValue
+    };
+  }
+  var csv = dsv(",");
+  var csvParse = csv.parse;
+  var csvParseRows = csv.parseRows;
+  var csvFormat = csv.format;
+  var csvFormatBody = csv.formatBody;
+  var csvFormatRows = csv.formatRows;
+  var csvFormatRow = csv.formatRow;
+  var csvFormatValue = csv.formatValue;
+  var tsv = dsv("\t");
+  var tsvParse = tsv.parse;
+  var tsvParseRows = tsv.parseRows;
+  var tsvFormat = tsv.format;
+  var tsvFormatBody = tsv.formatBody;
+  var tsvFormatRows = tsv.formatRows;
+  var tsvFormatRow = tsv.formatRow;
+  var tsvFormatValue = tsv.formatValue;
+  function autoType(object) {
+    for (var key in object) {
+      var value = object[key].trim(), number, m;
+      if (!value) value = null; else if (value === "true") value = true; else if (value === "false") value = false; else if (value === "NaN") value = NaN; else if (!isNaN(number = +value)) value = number; else if (m = value.match(/^([-+]\d{2})?\d{4}(-\d{2}(-\d{2})?)?(T\d{2}:\d{2}(:\d{2}(\.\d{3})?)?(Z|[-+]\d{2}:\d{2})?)?$/)) {
+        if (fixtz && !!m[4] && !m[7]) value = value.replace(/-/g, "/").replace(/T/, " ");
+        value = new Date(value);
+      } else continue;
+      object[key] = value;
+    }
+    return object;
+  }
+  // https://github.com/d3/d3-dsv/issues/45
+  const fixtz = new Date("2019-01-01T00:00").getHours() || new Date("2019-07-01T00:00").getHours();
+  exports.autoType = autoType;
+  exports.csvFormat = csvFormat;
+  exports.csvFormatBody = csvFormatBody;
+  exports.csvFormatRow = csvFormatRow;
+  exports.csvFormatRows = csvFormatRows;
+  exports.csvFormatValue = csvFormatValue;
+  exports.csvParse = csvParse;
+  exports.csvParseRows = csvParseRows;
+  exports.dsvFormat = dsv;
+  exports.tsvFormat = tsvFormat;
+  exports.tsvFormatBody = tsvFormatBody;
+  exports.tsvFormatRow = tsvFormatRow;
+  exports.tsvFormatRows = tsvFormatRows;
+  exports.tsvFormatValue = tsvFormatValue;
+  exports.tsvParse = tsvParse;
+  exports.tsvParseRows = tsvParseRows;
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+});
+
+},{}],"5gA8y":[function(require,module,exports) {
 "use strict";
 
 exports.interopDefault = function (a) {
@@ -26591,6 +26777,6 @@ function registerExportsForReactRefresh(module) {
   }
 }
 
-},{"react-refresh/runtime":"592mh"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequire9230")
+},{"react-refresh/runtime":"592mh"}]},["1j6wU","3Imd1","5rkFb"], "5rkFb", "parcelRequiref00d")
 
 //# sourceMappingURL=index.3fafb3e2.js.map
